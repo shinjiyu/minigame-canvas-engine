@@ -179,6 +179,8 @@ var create = function create(node, style) {
   args.className = attr["class"] || '';
   var element = new _constructor(args);
   element.root = this;
+  element.args = args;
+  element.type = node.name;
   children.forEach(function (childNode) {
     var childElement = create.call(_this, childNode, style);
     element.add(childElement);
@@ -404,6 +406,8 @@ function (_Element) {
       this.layoutTree = create.call(this, xmlTree, style);
       this.debugInfo.layoutTree = new Date() - start;
       this.add(this.layoutTree);
+      var json = this.getJson(this.layoutTree);
+      console.log(JSON.stringify(json));
       var elementTree = {
         id: this.id,
         style: {
@@ -427,6 +431,31 @@ function (_Element) {
       }
 
       this.state = _common_util_js__WEBPACK_IMPORTED_MODULE_4__["STATE"].INITED;
+    }
+  }, {
+    key: "getJson",
+    value: function getJson(tree) {
+      var json = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var args = tree.args;
+      json.id = tree.id;
+      json.component = tree.type;
+      json.children = [];
+      json.attributes = {
+        style: args.style,
+        idName: tree.id,
+        clsssName: tree.className,
+        src: tree.src,
+        value: tree.value
+      };
+
+      for (var key in tree.children) {
+        var child = tree.children[key];
+        var childJson = {};
+        json.children.push(childJson);
+        this.getJson(child, childJson);
+      }
+
+      return json;
     }
   }, {
     key: "layout",

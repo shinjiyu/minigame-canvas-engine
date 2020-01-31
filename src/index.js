@@ -69,6 +69,8 @@ const create = function (node, style) {
 
     const element  = new _constructor(args)
     element.root = this;
+    element.args = args;
+    element.type = node.name;
 
     children.forEach(childNode => {
         const childElement = create.call(this, childNode, style);
@@ -286,6 +288,9 @@ class _Layout extends Element {
         this.debugInfo.layoutTree = new Date() - start;
         this.add(this.layoutTree);
 
+        let json = this.getJson(this.layoutTree);
+        console.log(JSON.stringify(json));
+
         const elementTree = {
             id: this.id,
             style: {
@@ -311,6 +316,32 @@ class _Layout extends Element {
         }
 
         this.state = STATE.INITED;
+    }
+
+    getJson(tree, json = {}) {
+        let { args } = tree;
+
+        json.id        = tree.id;
+        json.component = tree.type;
+        json.children  = [];
+        json.attributes = {
+            style: args.style,
+            idName: tree.id,
+            clsssName: tree.className,
+            src: tree.src,
+            value: tree.value
+        }
+
+        for ( let key in tree.children ) {
+            let child     = tree.children[key];
+            let childJson = {};
+
+            json.children.push(childJson);
+
+            this.getJson(child, childJson);
+        }
+
+        return json;
     }
 
     layout(context) {
