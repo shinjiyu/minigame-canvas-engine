@@ -437,21 +437,28 @@ function (_Element) {
     value: function getJson(tree) {
       var json = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var args = tree.args;
-      json.id = tree.id;
+      json.id = tree.idName || String(tree.id);
       json.component = tree.type;
-      json.children = [];
-      json.attributes = {
-        style: args.style,
-        idName: tree.id,
-        clsssName: tree.className,
-        src: tree.src,
-        value: tree.value
+      json.value = tree.value || tree.src;
+      var dataset = {
+        idName: tree.idName,
+        className: tree.className
       };
+      Object.keys(args).forEach(function (key) {
+        if (key.indexOf('data-') > -1) {
+          dataset[key.split('data-')[1]] = args[key];
+        }
+      });
+      json.attributes = {
+        style: JSON.stringify(args.style),
+        dataset: JSON.stringify(dataset)
+      };
+      json.items = [];
 
       for (var key in tree.children) {
         var child = tree.children[key];
         var childJson = {};
-        json.children.push(childJson);
+        json.items.push(childJson);
         this.getJson(child, childJson);
       }
 

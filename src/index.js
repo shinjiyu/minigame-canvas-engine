@@ -321,22 +321,32 @@ class _Layout extends Element {
     getJson(tree, json = {}) {
         let { args } = tree;
 
-        json.id        = tree.id;
+        json.id        = tree.idName || String(tree.id);
         json.component = tree.type;
-        json.children  = [];
+        json.value     = tree.value || tree.src;
+
+
+        let dataset = {
+            idName   : tree.idName,
+            className: tree.className,
+        };
+        Object.keys(args).forEach( key => {
+            if ( key.indexOf('data-') > -1 ) {
+                dataset[key.split('data-')[1]] = args[key];
+            }
+        });
+
         json.attributes = {
-            style: args.style,
-            idName: tree.id,
-            clsssName: tree.className,
-            src: tree.src,
-            value: tree.value
+            style  : JSON.stringify(args.style),
+            dataset: JSON.stringify(dataset),
         }
+        json.items = [];
 
         for ( let key in tree.children ) {
             let child     = tree.children[key];
             let childJson = {};
 
-            json.children.push(childJson);
+            json.items.push(childJson);
 
             this.getJson(child, childJson);
         }
