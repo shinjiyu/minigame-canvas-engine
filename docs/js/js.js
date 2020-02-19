@@ -1,5 +1,6 @@
 export default
 `
+
 /**
   * xml为编辑器实例，挂载到window对象，通过xml.getValue可以拿到模板字符串
   * style为编辑器实例，挂载到window对象，通过style.getValue可以拿到样式对象的字符串值
@@ -54,10 +55,10 @@ let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
 
 // 设置canvas的尺寸和样式的container比例一致
-canvas.style.width = 300 + 'px';
-canvas.style.height = 1410/ 960* 300 + 'px';
-canvas.width = 960;
-canvas.height = 1410;
+canvas.style.width = 414 / 1.5 + 'px';
+canvas.style.height = 896 / 1.5 + 'px';
+canvas.width = 414;
+canvas.height = 896;
 
 function init() {
     let pos = getElementPagePosition(canvas);
@@ -78,4 +79,5 @@ function init() {
 
 init();
 window.onresize = init;
+
 `

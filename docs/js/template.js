@@ -1,36 +1,16 @@
 export default
 `
-<view class="container" id="main">
-  <view class="header">
-    <text class="title" value="排行榜"></text>
-  </view>
-  <view class="rankList">
-        <scrollview class="list">
-            {{~it.data :item:index}}
-                {{? index % 2 === 1 }}
-                <view class="listItem listItemOld">
-                {{?}}
-                {{? index % 2 === 0 }}
-                <view class="listItem">
-                {{?}}
-                    <text class="listItemNum" value="{{= index + 1}}"></text>
-                    <image class="listHeadImg" src="{{= item.avatarUrl }}"></image>
-                  <text class="listItemName" value="{{= item.nickname}}"></text>
-                  <text class="listItemScore" value="{{= item.rankScore}}"></text>
-                  <text class="listScoreUnit" value="分"></text>
-                </view>
-            {{~}}
-        </scrollview>
-        <text class="listTips" value="仅展示前50位好友排名"></text>
-
-        <view class="listItem selfListItem">
-            <text class="listItemNum" value="{{= it.selfIndex}}"></text>
-            <image class="listHeadImg" src="{{= it.self.avatarUrl }}"></image>
-            <text class="listItemName" value="{{= it.self.nickname}}"></text>
-            <text class="listItemScore" value="{{= item.rankScore}}"></text>
-            <text class="listScoreUnit" value="分"></text>
-        </view>
+<view id="guest">
+  <view id="guestContainer">
+    <view class="header">
+      <image class="close" data-click="execFlow" data-flowid="closeComponent" src="https://res.wx.qq.com/wechatgame/product/webpack/userupload/20200130/close.png"></image>
+      <text class="title" value="朋友助力得道具"></text>
     </view>
-</view>
 
+    <image id="guestGiftImage" class="giftIcon" src="https://res.wx.qq.com/wechatgame/product/webpack/userupload/20200212/defaultGift.png"></image>
+    <text id="guestGiftTips" class="giftTips" value="邀请5个好友即可获得奖励"></text>
+
+    <text id="guestGiftButton" class="giftButton" value="我也要" data-click="execFlow" data-flowid="create_share"></text>
+  </view>
+</view>
 `

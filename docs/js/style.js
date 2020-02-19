@@ -1,115 +1,122 @@
 export default
 `
 window.styleValue = {
-    container: {
-        width: 960,
-        height: 1410,
+    guest: {
+        width: 414,
+        height: 896,
+        position: 'absolute',
+        left: 0,
+        top: 0,
+       justifyContent: 'center',
+       alignItems: 'center',
+
+    },
+    host:{
+        width: 414,
+        height: 896,
+        position: 'absolute',
+        left: 0,
+        top: 0,
+       justifyContent: 'center',
+       alignItems: 'center',
+    },
+    hostContainer: {
+        width: 320,
+        height: 404,
+        backgroundColor: '#ffffff',
         borderRadius: 12,
+        alignItems: 'center',
+    },
+    guestContainer: {
+        width: 320,
+        height: 348,
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        alignItems: 'center',
     },
 
     header: {
-        height: 120,
-        width: 960,
+        height: 40,
+        width: 320,
         flexDirection: 'column',
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
         alignItems: 'center',
-      	backgroundColor: '#ffffff',
-        borderBottomWidth: 0.5,
-        borderColor: 'rgba(0, 0, 0, 0.3)',
+    },
+
+    close: {
+      width: 20,
+      height: 20,
+      position: 'absolute',
+      left: 16,
+      top: 16
     },
 
     title: {
-        width: 144,
-        fontSize: 48,
-        height: 120,
-        lineHeight: 120,
+        width: 200,
+        fontSize: 17,
+        height: 24,
+        lineHeight: 24,
         textAlign: 'center',
-        fontWeight: 'bold',
-        borderBottomWidth: 6,
-        borderColor: '#000000',
+        opacity: 0.9,
+        marginTop: 16,
     },
 
-    rankList: {
-        width: 960,
-        height: 1000,
-      	backgroundColor: '#ffffff',
+    giftIcon: {
+      width: 96,
+      height: 96,
+      marginTop: 32,
     },
 
-    list: {
-        width          : 960,
-        height         : 950,
-      	backgroundColor: '#ffffff',
-        marginTop: 30,
+    giftTips: {
+      width: 414,
+      height: 20,
+      lineHeight: 20,
+      fontSize: 14,
+      textAlign: 'center',
+      marginTop: 16,
+    opacity: 0.9
+    },
+    userList: {
+      width: 320,
+      paddingLeft: 36,
+      paddingRight: 36,
+      marginTop: 16,
+      height: 40,
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
 
-    listItem: {
-        backgroundColor: '#F7F7F7',
-        width: 960,
-        height: 150,
-        flexDirection: 'row',
-        alignItems: 'center',
+    userItem: {
+      width: 40,
+      height: 40,
+      borderRadius: 4,
     },
 
-    listItemOld: {
-       backgroundColor: '#ffffff',
+    giftButton: {
+      width: 184,
+      height: 40,
+      lineHeight: 40,
+      textAlign: 'center',
+      backgroundColor: '#28a745',
+      borderRadius: 4,
+      color: '#ffffff',
+      fontSize: 16,
+      marginTop: 40,
     },
 
-    listItemNum: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        color: '#452E27',
-        lineHeight: 150,
-        height: 150,
-        textAlign: 'center',
-        width: 120,
+    giftTipBottom: {
+      width: 414,
+      height: 17,
+      lineHeight: 17,
+      fontSize: 12,
+      textAlign: 'center',
+      marginTop: 16,
+      color: '#444444',
     },
 
-    listHeadImg: {
-        borderRadius: 6,
-        width: 90,
-        height: 90,
-    },
-
-    listItemScore: {
-        fontSize: 48,
-        fontWeight: 'bold',
-        marginLeft : 10,
-        height: 150,
-        lineHeight: 150,
-        width: 300,
-        textAlign: 'right',
-    },
-
-    listItemName:{
-        fontSize: 36,
-        height: 150,
-        lineHeight: 150,
-        width: 350,
-        marginLeft: 30,
-    },
-
-    listScoreUnit: {
-        opacity: 0.5,
-        color: '#000000',
-        fontSize: 30,
-        height: 150,
-        lineHeight: 150,
-        marginLeft: 8,
-    },
-
-    selfListItem: {
-        borderRadius: 20,
-        marginTop: 50,
-        backgroundColor: '#ffffff',
-    },
-
-  	listTips: {
-      	width: 960,
-        height: 90,
-      	lineHeight: 90,
-      	textAlign: 'center',
-      	fontSize: 30,
-      	color: 'rgba(0,0,0,0.5)',
-      	backgroundColor: '#ffffff',
-        borderRadius: 10,
+    shareButton: {
+    hidden: true
     }
-}`
+}
+`
