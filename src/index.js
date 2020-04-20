@@ -244,6 +244,8 @@ class _Layout extends Element {
      * y坐标
      */
     updateViewPort(box) {
+        let bChanged = false;
+        let pre = JSON.stringify(this.viewport);
         this.viewport.width  = box.width  || 0;
         this.viewport.height = box.height || 0;
         this.viewport.x      = box.x      || 0;
@@ -255,6 +257,12 @@ class _Layout extends Element {
         }
 
         this.hasViewPortSet = true;
+        if(pre !== JSON.stringify(this.viewport)){
+            if(this.renderport && this.elementTree && this.children){
+                updateRealLayout(this.elementTree.children, this.children, this.viewport.width / this.renderport.width);
+            }
+        }
+
     }
 
     init(template, style, attrValueProcessor) {
